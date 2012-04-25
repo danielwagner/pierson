@@ -54,7 +54,7 @@ function eventSource(request, response) {
   
   var fileName = "static/tests.js";
   
-  console.log("watching", fileName);
+  //console.log("watching", fileName);
   
   response.writeHead(200, {
     "Content-Type": "text/event-stream",
@@ -63,9 +63,9 @@ function eventSource(request, response) {
   });
   
   fs.watchFile(fileName, function (curr, prev) {
-    var eventType = 'update';
+    var eventType = 'testsuitechange';
     
-    console.log(fileName, "changed");
+    //console.log(fileName, "changed");
     
     var responseText = [
         'event:' + eventType,

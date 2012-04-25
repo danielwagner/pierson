@@ -1,0 +1,1 @@
+../../qooxdoo.git/component/standalone/website/script/q.js
