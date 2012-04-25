@@ -28,7 +28,7 @@ q.ready(function() {
     el = document.createElement("script");
     el.id = "tests-script";
     el.type = "text/javascript";
-    el.src = e.data;
+    el.src = e.data + "?nocache=" + new Date().getTime();
     document.body.appendChild(el);
     
   }, false);
