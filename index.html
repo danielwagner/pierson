@@ -6,7 +6,7 @@
       if (typeof window.EventSource !== "function") {
         return;
       }
-      var eventSource = new EventSource("http://localhost:8888/eventsource");
+      var eventSource = new EventSource("/eventsource");
       
       eventSource.addEventListener('message', function(e) {
         console.log(e.data);
@@ -32,7 +32,7 @@
         el = document.createElement("script");
         el.id = "tests";
         el.type = "text/javascript";
-        el.src = "http://localhost:8888/tests";
+        el.src = e.data;
         document.body.appendChild(el);
         
       }, false);

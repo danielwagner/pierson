@@ -12,6 +12,9 @@ http.createServer(function(request, response) {
   else if (pathname == "") {
     handlers.index(request, response);
   }
+  else if (pathname.indexOf("static") >= 0) {
+    handlers.static(request, response);
+  }
   else {
     handlers.notFound(request, response, pathname);
   }
