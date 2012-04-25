@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <title>Test</title>
+  <script type="text/javascript">
+    window.onload = function() {
+      if (typeof window.EventSource !== "function") {
+        return;
+      }
+      var eventSource = new EventSource("http://localhost:8888/eventsource");
+      
+      eventSource.addEventListener('message', function(e) {
+        console.log(e.data);
+      }, false);
+
+      eventSource.addEventListener('open', function(e) {
+        console.log("Connected to event source");
+      }, false);
+
+      eventSource.addEventListener('error', function(e) {
+        if (e.readyState == EventSource.CLOSED) {
+        console.log("Event source connection closed");
+        }
+      }, false);
+      
+      eventSource.addEventListener('update', function(e) {
+        console.log("UPDATE", e.data);
+
+        var el = document.getElementById("tests");
+        if (el) {
+          el.parentElement.removeChild(el);
+        }
+        el = document.createElement("script");
+        el.id = "tests";
+        el.type = "text/javascript";
+        el.src = "http://localhost:8888/tests";
+        document.body.appendChild(el);
+        
+      }, false);
+      
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
