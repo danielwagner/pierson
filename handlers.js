@@ -39,7 +39,7 @@ function serveStatic(request, response) {
           response.end();
         }
       } else {
-        console.log('%s - %s', request.url, response.message);
+        //console.log('%s - %s', request.url, response.message);
       }
     });
   });
@@ -51,6 +51,7 @@ function eventSource(request, response) {
     console.log(key + ': ' + request.headers[key]);
   }
   */
+  console.log("client connected: " + request.headers["user-agent"]);
   
   var fileName = "static/tests.js";
   
